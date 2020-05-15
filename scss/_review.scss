@@ -1,0 +1,50 @@
+#reviews {
+  background: $light;
+  .owl-nav {
+    display: none;
+  }
+  .review {
+    padding: 2.5rem 4rem 2.5rem 2.5rem;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    @include col-lg {
+      margin-right: 1rem;
+      padding: 2rem;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+    &-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+      div {
+        margin-left: 1rem;
+        h5 {
+          margin-bottom: 0;
+        }
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+    &-body {
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+    &-footer {
+      color: $secondary;
+      li {
+        padding: 0.2rem;
+      }
+    }
+  }
+}

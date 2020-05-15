@@ -1,0 +1,64 @@
+// Variables
+$primary: #29ca8e;
+$secondary: #3f51b5;
+$dark: #252020;
+$light: #f9f9f9;
+
+// Responsive Typography
+@mixin fluid-typography($minFont, $maxFont, $minBkp, $maxBkp) {
+  $avgFont: ($minFont + $maxFont) / 2;
+  font-size: #{$minFont}px;
+  @media (min-width: #{$minBkp}px) and (max-width: #{$maxBkp - 1}px) {
+    font-size: #{$avgFont}px;
+    font-size: calc(
+      #{$minFont}px + (#{$maxFont} - #{$minFont}) * (100vw - #{$minBkp}px) /
+        (#{$maxBkp} - #{$minBkp})
+    );
+  }
+  @media (min-width: #{$maxBkp}px) {
+    font-size: #{$maxFont}px;
+  }
+}
+
+@mixin mdPlus {
+  @media (max-width: 768-1px) {
+    @content;
+  }
+}
+
+@mixin col-sm {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin col-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin col-lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin col-xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@function check-lightness($color) {
+  @if (lightness($color) < 60) {
+    @return #fff;
+  } @else {
+    @return #252020;
+  }
+}
+
+@mixin set-bg($color) {
+  background-color: $color;
+  color: check-lightness($color);
+}

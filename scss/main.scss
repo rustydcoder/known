@@ -1,0 +1,827 @@
+@import "config";
+// @import "navbar";
+// @import "home";
+// @import "about";
+// @import "teacher";
+// @import "course";
+// @import "review";
+// @import "contact";
+
+// Reset
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  @include fluid-typography(15, 18, 546, 1440);
+}
+body {
+  line-height: 1.4;
+}
+a {
+  text-decoration: none;
+}
+
+h2 {
+  color: #353535;
+}
+h4 {
+  color: #454545;
+}
+h6 {
+  color: #808080;
+}
+p {
+  color: #757575;
+}
+
+section,
+footer {
+  padding: 5rem 0 4rem;
+}
+
+.section-header {
+  margin: 0 0 2rem;
+  text-align: center;
+}
+.card {
+  margin-top: 2.5rem;
+}
+
+.webpage-wrapper {
+  button:focus,
+  button:active {
+    box-shadow: none;
+    outline: none;
+  }
+  a:focus,
+  a:active {
+    box-shadow: none;
+    outline: none;
+  }
+  .btn-primary:focus,
+  .btn-primary:active {
+    box-shadow: none;
+    outline: none;
+  }
+  .btn:focus,
+  .btn:active {
+    outline: none;
+    box-shadow: none;
+  }
+  .btn-primary:not(:disabled):not(.disabled).active,
+  .btn-primary:not(:disabled):not(.disabled):active,
+  .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: initial;
+    border-color: none;
+    border: none;
+    outline: none;
+  }
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background-color: #fff;
+  opacity: 1;
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 75px;
+    width: 75px;
+    border: 1px solid $dark;
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: preloader 1s linear infinite;
+  }
+}
+
+@keyframes preloader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: $primary;
+}
+
+/**************
+  NAVBAR
+**************/
+
+.navbar {
+  border-top: 5px solid $primary;
+  &.bg-light {
+    background-color: #fff !important;
+    box-shadow: 1px 1px 2px rgba(233, 230, 230, 0.4);
+  }
+  @include col-md {
+    padding: 0 0 !important;
+  }
+  &-brand {
+    color: $dark;
+    font-weight: 700;
+  }
+  &-header {
+    @include mdPlus {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+  #{&}-toggler {
+    border: none;
+    color: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
+  &-collapse {
+    @include col-md {
+      align-items: stretch !important;
+    }
+    @include mdPlus {
+      position: absolute;
+      width: 100%;
+      top: 85%;
+      left: 0;
+      transition: 0.3s !important;
+      background-color: #fff;
+    }
+  }
+  &-light &-nav {
+    @include col-md {
+      margin-left: 2rem;
+    }
+    .nav-item.active {
+      background-color: $primary;
+      .nav-link {
+        color: #fff !important;
+      }
+    }
+    .nav-link {
+      color: $dark !important;
+      font-size: 0.9rem;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mdPlus {
+        text-align: center;
+      }
+      &:hover {
+        @include set-bg($primary);
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+.nav-custom {
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: center;
+  align-items: center;
+  @include col-md {
+    align-items: stretch;
+    li:hover {
+      background-color: $primary;
+      display: flex;
+      align-items: center;
+      a {
+        color: #fff;
+      }
+    }
+  }
+  .nav-link-icon {
+    color: $dark;
+    text-decoration: none;
+    display: flex;
+    width: 105%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 0.4rem auto;
+    padding: 0.8rem 1.2rem;
+
+    &:hover {
+      background-color: $primary;
+      color: #fff;
+    }
+  }
+  .navbar-nav-icon {
+    background-color: $primary;
+    color: #fff;
+    font-size: 0.9rem;
+    border-radius: 50%;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+  }
+}
+
+/**************
+  HOME
+**************/
+
+div#home {
+  margin-top: 3.9rem;
+}
+.slide-image {
+  height: 650px;
+  width: 100vw;
+  cursor: e-resize;
+  background-color: $dark;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &-caption {
+    color: #fff;
+    .home-header {
+      margin: 0 0 1.5rem;
+      text-transform: capitalize;
+    }
+    p {
+      color: #fff;
+    }
+    .btn-custom {
+      margin: 3rem 0 0;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      background-color: transparent;
+      border: 1px solid #fff;
+      transition: 0.4s;
+      @include col-sm {
+        margin: 2rem 0 0;
+        padding: 0.5rem 3rem;
+        line-height: 2;
+        border-radius: 5rem;
+      }
+      &:hover {
+        background-color: #fff;
+        color: $dark;
+        border: 1px solid #fff;
+      }
+    }
+  }
+}
+.slide-image-1 {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url(../../image/slider-image1.jpg);
+}
+.slide-image-2 {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url(../../image/slider-image2.jpg);
+}
+.slide-image-3 {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url(../../image/slider-image3.jpg);
+}
+
+.home-info {
+  .card {
+    border: 1px solid darken($light, 5);
+    @include col-md {
+      min-height: 100%;
+    }
+    @include col-xl {
+      min-height: 90%;
+    }
+    &-body {
+      padding: 4rem 2rem;
+      @include col-md {
+        padding: 2rem 2rem;
+      }
+    }
+  }
+  &-header {
+    margin-bottom: 1rem;
+    display: inline-block;
+    @include set-bg($secondary);
+    height: 4rem;
+    border-radius: 50%;
+    width: 4rem;
+    text-align: center;
+    line-height: 2.2;
+  }
+}
+
+/**************
+  ABOUT
+**************/
+
+#about {
+  .section-header {
+    text-align: left;
+  }
+  figure {
+    display: grid;
+    grid-template-columns: 15% 80%;
+    justify-items: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 2rem;
+    @include col-sm {
+      gap: 16px;
+      grid-template-columns: 20% 80%;
+    }
+    @include col-md {
+      grid-template-columns: 15% 80%;
+      gap: 16px;
+    }
+    .fig-icon {
+      @include set-bg($primary);
+      height: 3.5rem;
+      width: 3.5rem;
+      @include col-sm {
+        height: 5.5rem;
+        width: 5.5rem;
+      }
+      @include col-lg {
+        height: 4rem;
+        width: 4rem;
+      }
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & > .fa {
+        font-size: 1.5rem;
+        @include col-md {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.about-form {
+  margin: 0 auto;
+  display: flex;
+  flex: 7;
+  height: 350px;
+  width: 350px;
+  @include col-sm {
+    height: 500px;
+    width: 500px;
+  }
+  @include col-md {
+    height: 650px;
+    width: 650px;
+  }
+  @include col-lg {
+    height: 450px;
+    width: 450px;
+  }
+  @include col-xl {
+    height: 500px;
+    width: 500px;
+  }
+}
+.form-tab {
+  @include set-bg($dark);
+  border-radius: 50%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0 4rem;
+  &-option {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    @include col-sm {
+      top: 20%;
+    }
+    .fs-h2 {
+      font-size: 1.3rem;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.6rem;
+      display: block;
+      color: #fff;
+    }
+  }
+  &-panel {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    padding: 0 4rem;
+    @include col-sm {
+      top: 35%;
+    }
+  }
+  &-panel > div {
+    display: none;
+    .input-form {
+      margin-bottom: 1.2rem;
+      text-align: center;
+      input {
+        padding: 0.6rem 0.8rem;
+        outline: none;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        color: lighten($dark, 30%);
+        border-bottom: 1px solid lighten($dark, 30%);
+        background-color: transparent;
+        width: 100%;
+      }
+      .btn-white {
+        padding: 0.5rem 3rem 0.6rem;
+        border-radius: 5rem;
+        font-size: 1.1rem;
+        line-height: 2;
+        border: 1px solid #fff;
+        transition: 0.4s;
+        background-color: #fff;
+        color: $dark;
+        @include col-sm {
+          padding: 0.5rem 2rem 0.6rem;
+        }
+        &:hover {
+          @include set-bg($secondary);
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+/**************
+  TEACHER
+**************/
+
+section#teachers {
+  @include set-bg($light);
+  .section-header {
+    margin: 0 0 -0.5rem;
+  }
+  .card {
+    @include col-md {
+      min-height: 90%;
+    }
+  }
+  .card-body {
+    padding: 1.5rem;
+    @include col-md {
+      padding: 1rem;
+    }
+    @include set-bg(#fff);
+    .dark-text {
+      color: $dark;
+      margin: 0px;
+    }
+  }
+  .card-footer {
+    padding: 1.5rem;
+    @include col-md {
+      padding: 1rem;
+    }
+    @include set-bg(#fff);
+    border-top: 1px dotted #909090;
+    a {
+      font-size: 1.3rem;
+      color: $dark;
+      margin-right: 1rem;
+      @include col-md {
+        margin-right: 0.5rem;
+      }
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/**************
+  COURSE
+**************/
+
+#courses {
+  .owl-nav button {
+    background: darken($light, 10);
+    text-align: center;
+    width: 44px;
+    line-height: 1.5;
+    padding: 0.1rem 0rem 0.4rem !important;
+    font-size: 1.3rem;
+    color: #fff;
+    &:hover {
+      background: darken($light, 20);
+    }
+  }
+  .owl-dots {
+    display: none;
+  }
+  .card {
+    margin: 0 0 1rem;
+    @include col-lg {
+      margin: 0 1rem 1rem;
+    }
+    @include set-bg($light);
+    &-header {
+      position: relative;
+      padding: 0;
+      &-overlay {
+        background: linear-gradient(to top, rgba($dark, 0.4), rgba($dark, 0));
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-end;
+        .nav {
+          padding: 1.5rem 0;
+          color: #fff;
+          justify-content: space-between;
+        }
+      }
+    }
+    &-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $light;
+      &-img {
+        display: flex;
+        align-items: center;
+        img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+        }
+        div {
+          margin-left: 1rem;
+        }
+      }
+      .price-tag {
+        @include set-bg($primary);
+        border: none;
+        outline: none;
+        &:hover {
+          background-color: darken($primary, 5);
+        }
+      }
+      .price-free {
+        @include set-bg($secondary);
+        border: none;
+        outline: none;
+        &:hover {
+          background-color: darken($secondary, 5);
+        }
+      }
+    }
+  }
+}
+
+/**************
+  REVIEW
+**************/
+
+#reviews {
+  background: $light;
+  .owl-nav {
+    display: none;
+  }
+  .review {
+    padding: 2.5rem 4rem 2.5rem 2.5rem;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    @include col-lg {
+      margin-right: 1rem;
+      padding: 2rem;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+    &-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+      div {
+        margin-left: 1rem;
+        h5 {
+          margin-bottom: 0;
+        }
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+    &-body {
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+    &-footer {
+      color: $secondary;
+      li {
+        padding: 0.2rem;
+      }
+    }
+  }
+}
+
+/**************
+  CONTACT
+**************/
+
+.contact {
+  @include set-bg($secondary);
+  &-header {
+    margin-bottom: 2rem;
+    .lead {
+      margin-bottom: 0;
+      color: #fff;
+    }
+  }
+  @include col-md {
+    &-img {
+      height: 90%;
+      width: 100%;
+      .img-responsive {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &-form {
+    margin-bottom: 2rem;
+  }
+  &-form-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.8rem;
+    input,
+    textarea {
+      width: 100%;
+      border-radius: 0.6rem;
+      border: none;
+      padding: 0.7rem 0.8rem;
+      @include col-md {
+        padding: 0.4rem 0.7rem;
+      }
+      outline: none;
+      display: block;
+    }
+    .btn-custom {
+      display: block;
+      text-align: center;
+      line-height: 2;
+      @include col-md {
+        line-height: 1.5;
+        padding: 0.5rem 1.5rem;
+      }
+      border-radius: 5rem;
+      font-size: 1.1rem;
+      @include set-bg(#fff);
+      border: 1px solid #fff;
+      transition: 0.4s;
+      width: 100%;
+      &:hover {
+        @include set-bg(transparent);
+        border: 1px solid #fff;
+      }
+    }
+  }
+}
+
+.footer {
+  @include set-bg($dark);
+  &-header {
+    margin-bottom: 2rem;
+    h5 {
+      margin-bottom: 1.5rem;
+    }
+    p,
+    ul {
+      margin-bottom: 0;
+    }
+    small {
+      display: block;
+      color: #757575;
+    }
+  }
+  p {
+    margin: 0 0 0.8rem;
+    max-width: 60%;
+    line-height: 1.5;
+  }
+
+  &-nav {
+    display: flex;
+    li {
+      margin-right: 0.8rem;
+    }
+    &-item {
+      margin: 0 1rem 0.8rem 0;
+      .footer-nav-icon {
+        color: $primary;
+        padding: 0.25rem 0.5rem;
+        border-radius: 50%;
+        transition: 0.4s;
+        &:hover {
+          background-color: $primary;
+          color: #fff;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      display: block;
+      color: #757575;
+      transition: 0.4s;
+      &:hover {
+        color: $primary;
+        text-decoration: none;
+      }
+    }
+  }
+  input {
+    padding: 0.6rem 0.8rem;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: lighten($dark, 30%);
+    border-bottom: 1px solid lighten($dark, 30%);
+    background-color: transparent;
+    width: 100%;
+    margin: 0;
+  }
+  &-input-group {
+    margin-bottom: 1rem;
+    .btn-custom {
+      margin-top: 0.8rem;
+      // padding: 0.8rem;
+      line-height: 2;
+      border-radius: 5rem;
+      font-size: 1.1rem;
+      width: 60%;
+      @include set-bg(transparent);
+      border: 1px solid #fff;
+      transition: 0.4s;
+      &:hover {
+        @include set-bg($primary);
+        border: 1px solid $primary;
+      }
+    }
+  }
+}
