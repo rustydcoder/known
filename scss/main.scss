@@ -1,11 +1,4 @@
 @import "config";
-// @import "navbar";
-// @import "home";
-// @import "about";
-// @import "teacher";
-// @import "course";
-// @import "review";
-// @import "contact";
 
 // Reset
 
@@ -170,7 +163,7 @@ footer {
     }
   }
   &-light &-nav {
-    @include col-md {
+    @include col-lg {
       margin-left: 2rem;
     }
     .nav-item.active {
@@ -687,6 +680,9 @@ section#teachers {
   @include set-bg($secondary);
   &-header {
     margin-bottom: 2rem;
+    h2 {
+      color: #fff;
+    }
     .lead {
       margin-bottom: 0;
       color: #fff;
